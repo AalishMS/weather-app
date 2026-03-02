@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-const API_KEY = 'YOUR_OPENWEATHER_API_KEY' // Users can add their own key
+const API_KEY = '987c156877d1d787c4ee1698762610d2'
 
 function App() {
   const [city, setCity] = useState('')
