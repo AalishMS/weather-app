@@ -57,12 +57,6 @@ weather_app/
 └── vite.config.js
 ```
 
-## Deployment
-
-[![Deployed on Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://weather-app-rouge-one-78.vercel.app)
-
-Deployed via Vercel with automatic CI/CD on push to `master`.
-
 ## License
 
 MIT
