@@ -111,11 +111,15 @@ function App() {
 
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName.trim())}&appid=${API_KEY}&units=metric`
       )
 
       if (!response.ok) {
-        throw new Error('City not found')
+        throw new Error(
+          response.status === 404
+            ? 'City not found. Check the spelling and try again.'
+            : 'Unable to fetch weather. Please try again later.'
+        )
       }
 
       const data = await response.json()
@@ -157,6 +161,8 @@ function App() {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             className="search-input"
+            aria-label="City name"
+            autoComplete="off"
           />
           <button type="submit" className="search-button" aria-label="Search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
