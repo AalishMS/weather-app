@@ -1,62 +1,67 @@
 # Weather App
 
-A beautiful, modern weather application built with React and Vite. Get real-time weather information for any city in the world.
+A minimalist, dark-themed weather application built with React and Vite. Get real-time weather data for any city worldwide with a clean, elegant interface.
 
 ## Features
 
-- Real-time weather data from OpenWeather API
-- Beautiful gradient UI design
-- Responsive design for mobile and desktop
-- Displays temperature, humidity, wind speed, and pressure
-- Search any city worldwide
-- Smooth animations and transitions
+- **Real-time weather** — Live data from the OpenWeather API
+- **Global search** — Find weather for any city
+- **Dark & minimal UI** — Clean, subdued design with subtle noise texture
+- **Weather icons** — Custom SVG icons for every condition (clear, cloudy, rain, snow, thunderstorm, mist)
+- **Responsive** — Works seamlessly on mobile and desktop
+- **Smooth animations** — Fade-in and slide-up transitions
+- **Key metrics** — Temperature, feels like, humidity, wind speed, pressure
+
+## Tech Stack
+
+- React 19
+- Vite 7
+- OpenWeather API
+- CSS custom properties
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm or yarn
-- OpenWeather API key (get one free at https://openweathermap.org/api)
-
-### Installation
-
-1. Clone the repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/AalishMS/weather-app.git
 cd weather_app
-```
-
-2. Install dependencies
-```bash
 npm install
-```
-
-3. Add your OpenWeather API key
-   - Open `src/App.jsx`
-   - Replace `YOUR_OPENWEATHER_API_KEY` with your actual API key
-
-4. Start the development server
-```bash
 npm run dev
 ```
 
-5. Open your browser and navigate to `http://localhost:5173`
+The dev server starts at `http://localhost:5173`. The app defaults to showing London's weather; use the search bar to look up any city.
 
-## Building for Production
+### API Key
+
+The app ships with a demo API key. For production, get your own free key at [openweathermap.org/api](https://openweathermap.org/api) and replace the `API_KEY` in `src/App.jsx`.
+
+## Build
 
 ```bash
 npm run build
+npm run preview
 ```
 
-The production-ready files will be in the `dist` directory.
+Static output goes to the `dist/` directory.
 
-## Technologies Used
+## Project Structure
 
-- React 18
-- Vite
-- OpenWeather API
-- CSS3 with modern gradients and animations
+```
+weather_app/
+├── src/
+│   ├── App.jsx        # Main app component
+│   ├── App.css        # App styles
+│   ├── index.css      # Global styles & variables
+│   └── main.jsx       # Entry point
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## Deployment
+
+[![Deployed on Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://weather-app-rouge-one-78.vercel.app)
+
+Deployed via Vercel with automatic CI/CD on push to `master`.
 
 ## License
 
