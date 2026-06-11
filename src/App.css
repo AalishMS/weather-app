@@ -315,3 +315,77 @@
     margin-top: 32px;
   }
 }
+
+@media (min-width: 900px) {
+  .app {
+    padding: 48px 40px;
+  }
+
+  .weather-container {
+    max-width: 900px;
+    padding: 56px 64px;
+  }
+
+  .header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  .date {
+    margin-top: 0;
+  }
+
+  .search-form {
+    max-width: 420px;
+    margin-bottom: 48px;
+  }
+
+  .weather-info {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    grid-template-areas:
+      'location details'
+      'main details';
+    column-gap: 64px;
+    align-items: center;
+  }
+
+  .location {
+    grid-area: location;
+    text-align: left;
+    margin-bottom: 28px;
+  }
+
+  .weather-main {
+    grid-area: main;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 48px;
+    margin-bottom: 0;
+  }
+
+  .weather-icon {
+    width: 88px;
+    height: 88px;
+  }
+
+  .temperature-wrap {
+    align-items: flex-start;
+  }
+
+  .temperature {
+    text-align: left;
+  }
+
+  .temperature h1 {
+    font-size: 110px;
+  }
+
+  .weather-details {
+    grid-area: details;
+    margin-top: 0;
+  }
+}
