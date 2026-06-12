@@ -54,7 +54,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 40px;
   background: var(--input-fill);
   border: 1px solid rgba(212, 196, 168, 0.15);
   border-radius: 999px;
@@ -297,10 +296,6 @@
     margin-bottom: 28px;
   }
 
-  .search-form {
-    margin-bottom: 32px;
-  }
-
   .location {
     margin-bottom: 32px;
   }
@@ -336,11 +331,6 @@
 
   .date {
     margin-top: 0;
-  }
-
-  .search-form {
-    max-width: 420px;
-    margin-bottom: 48px;
   }
 
   .weather-info {

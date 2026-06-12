@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import CitySearch from './CitySearch'
 import './App.css'
 
 const API_KEY = '987c156877d1d787c4ee1698762610d2'
@@ -98,21 +99,22 @@ function WeatherIcon({ code, description }) {
 }
 
 function App() {
-  const [city, setCity] = useState('')
   const [weather, setWeather] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const fetchWeather = async (cityName) => {
+  const fetchWeather = async (cityName, lat = null, lon = null) => {
     if (!cityName.trim()) return
 
     setLoading(true)
     setError('')
 
     try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName.trim())}&appid=${API_KEY}&units=metric`
-      )
+      const url = lat != null && lon != null
+        ? `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+        : `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName.trim())}&appid=${API_KEY}&units=metric`
+
+      const response = await fetch(url)
 
       if (!response.ok) {
         throw new Error(
@@ -132,9 +134,12 @@ function App() {
     }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    fetchWeather(city)
+  const handleCitySearch = (query) => {
+    fetchWeather(query)
+  }
+
+  const handleCitySelect = (name, lat, lon) => {
+    fetchWeather(name, lat, lon)
   }
 
   const formatDate = () => {
@@ -154,23 +159,7 @@ function App() {
           <p className="date">{formatDate()}</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="search-form">
-          <input
-            type="text"
-            placeholder="Search for a city..."
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className="search-input"
-            aria-label="City name"
-            autoComplete="off"
-          />
-          <button type="submit" className="search-button" aria-label="Search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-          </button>
-        </form>
+        <CitySearch onSearch={handleCitySearch} onSelectCity={handleCitySelect} />
 
         {loading && (
           <div className="loading">
